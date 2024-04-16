@@ -70,12 +70,13 @@ jobs:
     - name: test2
       run: |
         ls
+        echo "========================="
         KERNEL_PATCHVER=$(grep KERNEL_PATCHVER:= openwrt/target/linux/x86/Makefile | sed 's/ //g' | cut -d '=' -f 2)
         echo "$KERNEL_PATCHVER"
         KERNEL_VERSION=$(grep LINUX_KERNEL_HASH openwrt/include/kernel-"$KERNEL_PATCHVER" | sed 's/ //g' | cut -d '-' -f 2 | cut -d '=' -f 1)
-        echo "$LINUX_VERSION"
+        echo "$KERNEL_VERSION"
         KERNEL_HASH=&(grep LINUX_KERNEL_HASH openwrt/include/kernel-"$KERNEL_PATCHVER" | sed 's/ //g' | cut -d '=' -f 2)
-        echo "KERNEL_HASH"
+        echo "$KERNEL_HASH"
         
 
     # - name: Load custom feeds
