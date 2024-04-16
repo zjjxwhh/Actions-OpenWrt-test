@@ -77,9 +77,9 @@ jobs:
         echo "$KERNEL_VERSION"
         KERNEL_HASH=&(grep 'LINUX_KERNEL_HASH' openwrt/include/kernel-"$KERNEL_PATCHVER" | sed 's/ //g' | cut -d '=' -f 2)
         echo "$KERNEL_HASH"
-        ROM_VERSION=&(grep 'DISTRIB_REVISION=' openwrt/package/lean/default-settings/files/zzz-default-settings | grep -o "'[^']*'" | awk -F "'" '{print $2}')
+        ROM_VERSION=&(grep 'DISTRIB_REVISION=' openwrt/package/lean/default-settings/files/zzz-default-settings | cut -d "'" -f 2 | cut -d "'" -f 1)
         echo "$ROM_VERSION"
-        GATEWAY_IP=$(grep 'lan) ipad=' package/base-files/files/bin/config_generate) | cut -d '"' -f 2 | cut -d '"' -f 1
+        GATEWAY_IP=$(grep 'lan) ipad=' openwrt/package/base-files/files/bin/config_generate) | cut -d '"' -f 2 | cut -d '"' -f 1
         echo "$GATEWAY_IP"
         echo "========================="
         cd openwrt && git log
