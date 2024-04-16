@@ -72,9 +72,9 @@ jobs:
         ls
         KERNEL_PATCHVER=$(grep KERNEL_PATCHVER:= openwrt/target/linux/x86/Makefile | cut -d '=' -f 2)
         echo "$KERNEL_PATCHVER"
-        KERNEL_VERSION=$(grep LINUX_KERNEL_HASH openwrt/include/kernel-"$KERNEL_PATCHVER" | cut -d '-' -f 2 | cut -d ' ' -f 2)
+        KERNEL_VERSION=$(grep LINUX_KERNEL_HASH openwrt/include/kernel-"$KERNEL_PATCHVER" | cut -d '-' -f 2 | cut -d ' ' -f 1)
         echo "$LINUX_VERSION"
-        KERNEL_HASH=&(grep LINUX_KERNEL_HASH openwrt/include/kernel-"$KERNEL_PATCHVER" | cut -d ' ' -f 2)
+        KERNEL_HASH=&(grep LINUX_KERNEL_HASH openwrt/include/kernel-"$KERNEL_PATCHVER" | cut -d ' ' -f 3)
         echo "KERNEL_HASH"
         
 
